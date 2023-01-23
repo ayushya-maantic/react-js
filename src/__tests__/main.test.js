@@ -80,8 +80,8 @@ test('UPDATE' ,async() => {
     // const alertMock = jest.spyOn(window,'alert').mockImplementation();
     
     
-    const m = render(<Add />)
-    const maindiv = m.getByTestId('main-table')
+    var m = render(<Add />)
+    var maindiv = m.getByTestId('main-table')
     expect(maindiv).toBeInTheDocument()
     expect(m.getByLabelText('search')).toBeInTheDocument()
     expect(m.getByLabelText('searchval')).toBeInTheDocument()
@@ -100,15 +100,22 @@ test('UPDATE' ,async() => {
     const submit = m.getByTestId('submit')
     fireEvent.click(submit)
     await waitFor(() => expect(['Updated']).toContain(m.getByTestId('Status').textContent))
-    fireEvent.click(m.getByTestId('viewall'))
+    // fireEvent.click(m.getByTestId('viewall'))
 
 
+    // fireEvent.change(m.getByLabelText('search'),{target: {value: 'ClientName'}})
+    // await waitFor(() => expect(m.getAllByLabelText('pval')))
+    // fireEvent.change(m.getByLabelText('searchval'),{target: {value: 'Iamclient'}})
+    expect(maindiv).toBeInTheDocument()
+    expect(m.getByLabelText('search')).toBeInTheDocument()
+    expect(m.getByLabelText('searchval')).toBeInTheDocument()
     fireEvent.change(m.getByLabelText('search'),{target: {value: 'ClientName'}})
     await waitFor(() => expect(m.getAllByLabelText('pval')))
+    fireEvent.change(m.getByLabelText('searchval'),{target: {value: 'CLEAR'}})
     fireEvent.change(m.getByLabelText('searchval'),{target: {value: 'Iamclient'}})
-    await waitFor(() => expect(m.getAllByRole("entry").length).toBe(5))
+    await waitFor(() => expect(m.getAllByRole("entry").length).toBe(1))
 
-    expect(m.getByRole('entry').textContent).toContain(timezone)
+    await waitFor(() => expect(m.getByRole('entry').textContent).toContain(timezone))
 
 })
 
