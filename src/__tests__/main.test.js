@@ -1,6 +1,7 @@
 import App from "../pages/App";
 import Add from "../pages/home";
-import {render, screen, cleanup,fireEvent, waitFor} from '@testing-library/react'
+
+import {render, screen, fireEvent, waitFor} from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 test('LOAD ADD PAGE', () =>{
@@ -39,30 +40,6 @@ test('BASIC READ', async () => {
     const m = render(<Add />)
     await waitFor(() => expect(m.getAllByRole("entry").length).toBeGreaterThanOrEqual(1))
 })
-
-// test('SEARCHBAR P1' ,async () => {
-//     const m = render(<Add />)
-//     const maindiv = m.getByTestId('main-table')
-//     expect(maindiv).toBeInTheDocument()
-//     fireEvent.change(m.getByLabelText('search'),{target: {value: 'Iamclient'}})
-//     expect(m.getByLabelText('search')).toBeInTheDocument()
-//     // expect(m.findByTestId('search')).toContainHTML()
-//     // fireEvent.change(m.getByAltText('search'),{target: {value: 'Iamclient'}})
-//     fireEvent.click(m.getByTestId("search-button"))
-//     // await new Promise((r) => setTimeout(r, 2000));
-//     // expect(m.getAllByRole("entry").length).toBe(1)
-//     await waitFor(() => expect(m.getAllByRole("entry").length).toBe(1))
-//     // await waitFor(() => expect(m.findByText('Iamclient')).toBeInTheDocument())
-// })
-
-// test('SEARCHBAR P2' ,async () => {
-//     const m = render(<Add />)
-//     const maindiv = m.getByTestId('main-table')
-//     expect(maindiv).toBeInTheDocument()
-//     fireEvent.change(m.getByTestId('search'),{target: {value: 'Iamnotclient'}})
-//     fireEvent.click(m.getByTestId("search-button"))
-//     await waitFor(() => expect(m.queryByRole("entry")).not.toBeInTheDocument())
-// })
 
 test('SEARCHBAR', async () => {
     const m = render(<Add />)

@@ -29,7 +29,7 @@ var sql = "CREATE TABLE if not exists customers ( ID VARCHAR(38) NOT NULL PRIMAR
     console.log("Table created");
   });
 
-var sql = "CREATE TABLE if not exists email_templates ( ID VARCHAR(38) NOT NULL PRIMARY KEY, Name VARCHAR(20) NOT NULL, CreateDate datetime NOT NULL, Content VARCHAR(2000), Subject VARCHAR(500), NotificationType VARCHAR(20) NOT NULL, EventType VARCHAR(20) NOT NULL, OrganizationID VARCHAR(38) NOT NULL, Active tinyint(1) NOT NULL DEFAULT 1, FOREIGN KEY (OrganizationID) REFERENCES customers(ID));"
+var sql = "CREATE TABLE if not exists email_templates ( ID VARCHAR(38) NOT NULL PRIMARY KEY, Name VARCHAR(20) NOT NULL UNIQUE, CreateDate datetime NOT NULL, Content VARCHAR(2000), Subject VARCHAR(500), NotificationType VARCHAR(20) NOT NULL, EventType VARCHAR(20) NOT NULL, OrganizationID VARCHAR(38) NOT NULL, Active tinyint(1) NOT NULL DEFAULT 1, FOREIGN KEY (OrganizationID) REFERENCES customers(ID));"
   con.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Table created");
@@ -99,11 +99,11 @@ app.post('/customers/update', (req,res) =>{
   sql = "UPDATE customers SET ClientName = ?, CntrRplcMMnth = ?, EmailID = ?, AppBaseLink = ?, LogoImage = ?, TimeZone = ?, HrsPerDay = ?, NoOfWrkDay = ?, RplcBudgetAllowed = ?, FirstAsmntMonths = ?, AssessReminderDueDay = ?, Active = ? WHERE ID = ?"
     con.query(sql, [body.ClientName, body.CntrRplcMMnth, body.EmailID, body.AppBaseLink, body.LogoImage, body.TimeZone, body.HrsPerDay, body.NoOfWrkDay, body.RplcBudgetAllowed, body.FirstAsmntMonths, body.AssessReminderDueDay, body.Active,body.ID], function (error) {
       if (error){
-        disconnect()
+        
         res.send({'m':error.sqlMessage})
       } 
       else{
-        disconnect()
+        
         res.send({'m':'Updated'})
       }
     });
@@ -118,7 +118,7 @@ app.get('/customers/getPoss',(req,res) => {
     con.query(sql, (error,results) => {
       if (error) throw error
       else{
-        disconnect()
+        
         console.log(results)
         res.send({'v':results})
       }
@@ -192,11 +192,11 @@ app.post('/email_templates/update', (req,res) =>{
   sql = "UPDATE email_templates SET Name = ?, CreateDate = ?, Content = ?, Subject = ?, NotificationType = ?, EventType = ?, OrganizationID = ?, Active = ? WHERE ID = ?"
     con.query(sql, [body.Name, body.CreateDate, body.Content, body.Subject, body.NotificationType, body.EventType, body.OrganizationID, body.Active, body.ID], function (error) {
       if (error){
-        disconnect()
+        
         res.send({'m':error.sqlMessage})
       } 
       else{
-        disconnect()
+        
         res.send({'m':'Updated'})
       }
     });
@@ -210,7 +210,7 @@ app.get('/email_templates/getPoss',(req,res) => {
     con.query(sql, (error,results) => {
       if (error) throw error
       else{
-        disconnect()
+        
         console.log(results)
         res.send({'v':results})
       }
@@ -252,7 +252,7 @@ app.post('/customers', (req,res) =>{
       if (error) res.send({'m':error.code});
       else res.send({'m':'Added'})
     });
-    disconnect()
+    
 })
 
 app.post('/email_templates', (req,res) =>{
@@ -265,7 +265,7 @@ app.post('/email_templates', (req,res) =>{
     // if (error) throw error;
     else res.send({'m':'Added'})
   });
-  disconnect()
+  
 })
 
 app.listen(3002)

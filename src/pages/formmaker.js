@@ -44,6 +44,7 @@ function FormMaker({formfields, os, oc, ip, fs}) {
                   <select
                     name={i[1]}
                     aria-label={i[1]}
+                    accessKey={i[1]}
                     value={ip[i[1]] || ""} 
                     onChange={oc}
                     required = {i[3]}
@@ -51,7 +52,7 @@ function FormMaker({formfields, os, oc, ip, fs}) {
                   <option value="-"> </option>
                   {
                     i[4].map(ops => (
-                      <option value={ops}>{ops}</option>
+                      <option data-testid = {i[1] + "option"} value={ops}>{ops}</option>
                     )
                     )
                   }
