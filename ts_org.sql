@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2023 at 05:27 AM
+-- Generation Time: Jan 25, 2023 at 09:23 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -48,8 +48,9 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`ID`, `ClientName`, `CntrRplcMMnth`, `EmailID`, `AppBaseLink`, `LogoImage`, `TimeZone`, `HrsPerDay`, `NoOfWrkDay`, `RplcBudgetAllowed`, `FirstAsmntMonths`, `AssessReminderDueDay`, `Active`) VALUES
-('577eccfd-8d8b-11ed-9b56-30c9aba679c4', 'Client3', NULL, 'aa@gmail.com', 'https://www.aa.com/c3', NULL, 'IST', 3, 5, 5, 6, 7, 1),
-('8c19bc58-8ccb-11ed-b98c-30c9aba679c4', 'Client2', 2, 'aab@gmail.com', 'https://www.aa.com/c2', 'ssh', 'GMT', 2, 2, 3, 3, 3, 0),
+('50306f02-9c86-11ed-930c-30c9aba679c4', 'Client10', 3, 'aa10@gmail.com', 'https://www.aa.com/c10', 'ssh', 'GMT', 3, 2, 42, 5, 9, 1),
+('577eccfd-8d8b-11ed-9b56-30c9aba679c4', 'Client3', NULL, 'aa@gmail.com', 'https://www.aa.com/c3', NULL, 'GMT', 3, 5, 5, 6, 7, 1),
+('8c19bc58-8ccb-11ed-b98c-30c9aba679c4', 'Client2', 2, 'aab@gmail.com', 'https://www.aa.com/c2', 'ssh', 'IST', 2, 2, 3, 3, 3, 0),
 ('917a3ad0-8d8b-11ed-9b56-30c9aba679c4', 'Client4', NULL, 'aac@gmail.com', 'https://www.aa.com/c4', NULL, 'IST', 3, 1, 6, 5, 7, 1),
 ('94e62b76-8d8b-11ed-9b56-30c9aba679c4', 'Client5', NULL, 'aad@gmail.com', 'https://www.aa.com/c5', NULL, 'IST', 3, 1, 6, 5, 7, 0),
 ('97a708a0-8d8b-11ed-9b56-30c9aba679c4', 'Client6', NULL, 'aae@gmail.com', 'https://www.aa.com/c6', NULL, 'IST', 3, 1, 6, 5, 7, 0),
@@ -82,7 +83,7 @@ CREATE TABLE `email_templates` (
 --
 
 INSERT INTO `email_templates` (`ID`, `Name`, `CreateDate`, `Content`, `Subject`, `NotificationType`, `EventType`, `OrganizationID`, `Active`) VALUES
-('206cbdf5-97bb-11ed-b8b6-30c9aba679c4', 'Temp4', '2023-01-16 11:05:00', 'Hello', 'Test', 'Email', 'CREATEPOS', '9c37a75b-8d8b-11ed-9b56-30c9aba679c4', 1),
+('206cbdf5-97bb-11ed-b8b6-30c9aba679c4', 'Temp4', '2023-01-16 11:05:00', 'HelloT4', 'Test', 'Email', 'CREATEPOS', '9c37a75b-8d8b-11ed-9b56-30c9aba679c4', 1),
 ('5fb5c3db-9631-11ed-8ab2-30c9aba679c4', 'Temp2', '2023-01-06 16:11:00', 'Hello', 's', 'Email', 'UPDATEPOS', '94e62b76-8d8b-11ed-9b56-30c9aba679c4', 1),
 ('649f1bb3-9631-11ed-8ab2-30c9aba679c4', 'Temp3', '2023-01-06 16:11:00', 'Hello', 's', 'Email', 'UPDATEPOS', 'a7d52580-90c6-11ed-89c9-30c9aba679c4', 0),
 ('6a4059fa-9631-11ed-8ab2-30c9aba679c4', 'Temp5', '2023-01-06 16:11:00', 'Hello', 's', 'Email', 'UPDATEPOS', '97a708a0-8d8b-11ed-9b56-30c9aba679c4', 1),
